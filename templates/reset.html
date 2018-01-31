@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block style %} 
+      position:absolute;
+{% endblock %}
+
+{% block nav %}
+   <li><a href="/signup/">Sign Up</a></li>
+   <li><a href="/login/">Login <span class="glyphicon glyphicon-log-in"></span></a></li> 
+{% endblock %}
+
+{% block content %}
+         <br><br><br>
+         <div class="col-md-offset-4 col-md-4">
+         	  <div id="form-header">Password Reset</div><br>
+         	    <form action="" method="post">
+         	    	<div class="form-group">
+
+         	    		<label for="username">Email Id:</label>
+         	    		<input class="form-control" type="text" name="username" id="username">
+         	    		<br>     	    		
+         	    		<input type="Submit" class="btn btn-info" value="Reset Your Password" style="float: left">
+         	    		{% csrf_token %}
+
+         	    	</div>
+         	    </form>
+         	    <br><br>
+
+         </div>
+
+{%endblock%}

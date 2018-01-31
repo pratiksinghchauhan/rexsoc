@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block style %} 
+      position:relative;
+{% endblock %}
+
+
+{% block nav %}
+             {% if user.is_authenticated %}
+              <li><a href="/userhome/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+             {% else %}
+              <li><a href="/signup/">Sign Up</a></li>
+              <li><a href="/login/">Login <span class="glyphicon glyphicon-log-in"></span></a></li> 
+             {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <style type="text/css">
+
+	.blogheading{
+		color: grey;
+		font-size: 350%;
+		font-family: "Times New Roman";
+	}
+
+	}
+	.jp{
+		color: grey;
+	}
+
+	.blogtitle{
+		color: #42b6f4;
+		text-decoration: underline;
+	}
+	.paras{
+		font-size: 150%;
+		color: grey;
+	}
+
+	</style>
+
+
+           <div class="jumbotron">
+            <div class="container" style="text-align: center;">
+              <h2 class="blogheading">The Rexsoc Blog</h2>
+              <p class="jp">Find out the latest news on Rexsoc</p>
+           </div>
+           </div>
+
+           <div class="container">
+             {% for items in query %}
+               <h1 class="blogtitle">{{items.title}}</h1>
+               <p>Posted by: <em><u>{{items.user}}</u></em> on {{items.date}}</p>
+               <p class="paras">{{items.description}}</p>
+               <br><br>
+             {% endfor %}
+           </div>
+
+
+{% endblock %}
+

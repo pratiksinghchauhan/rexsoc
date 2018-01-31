@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+
+{% block style %}
+    position:absolute;
+{% endblock %}
+
+
+{% block nav %}
+
+              <li><a href="/profile/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+{% endblock %}
+
+{% block content %}
+              <div class="container"> 
+                 <div class="col-md-6">
+                   <h2>Last updates on your network</h2>
+                 </div>
+
+                 <div class="col-md-5" style="text-align: center;">
+                     <br>
+                     <form action="/searchresults/" method="post">   {% csrf_token %}
+                       <input type="text" name="searchbox" placeholder="search Rexsoc">&nbsp
+                       <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                     </form>
+                   
+                 </div>
+
+                 <div class="col-md-1">
+                 <br>
+                 	<a href="/review/"><button class="btn btn-primary" type="button" >New review</button></a>
+                 </div>
+                 <hr>
+              </div>
+              <br><br>
+
+              <div class="container">
+              	<div class="col-md-7">
+                  {% if feed %}
+                     {% for items in feed %}
+                         {% for x in items %}
+                            <h1 style="color: blue"><u>{{ x.title }}</u></h1><br>
+                            <p>Posted by <u><i>{{ x.user }}</i></u> on {{ x.date }}</p>
+                            <p style="color: grey; font-size: 120%;">{{ x.description }}</p>
+                         {% endfor %}
+                     {% endfor %}
+                  {% else %} 
+                    <h4>There is no recent updates</h4>
+                  {% endif %}
+
+              	</div>
+
+
+              	<div class="col-md-5">
+              	  <div class="panel panel-primary">
+              	  	<div class="panel-heading">Latest News</div>
+              	  	<div class="panel-body">
+                       {% for items in query %}
+                        <h2 style="color: grey">{{items.title}}</h2>
+                        <p>Posted by <u><em>{{items.user}}</em></u> on {{items.date}}</p>
+                        <p style="font-size: 150%">{{items.description}}</p>  
+                       {% endfor %}
+                    </div>
+             	  </div>
+
+             	  <div class="panel panel-default">
+              	  	<div class="panel-heading">Your latest review</div>
+              	  	<div class="panel-body">
+                      {% for items in queryown %}
+                       <h2 style="color: grey">{{items.title}}</h2>  
+                       <p>Posted on {{items.date}}</p>
+                       <p style="font-size: 150%">{{items.description}}</p>  
+                      {% endfor %}
+                    </div>
+             	  </div>
+              	</div>
+              </div>
+
+
+
+
+{% endblock %}

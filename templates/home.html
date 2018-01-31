@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block style %} 
+      position:;
+{% endblock %}
+
+
+{% block nav %}
+   <li><a href="/signup/">Sign Up</a></li>
+   <li><a href="/login/">Login <span class="glyphicon glyphicon-log-in"></span></a></li> 
+{% endblock %}
+
+
+{% block content %}
+     <style type="text/css">
+
+     	.big{
+     		font-size: 400%;
+     	}
+
+     	.desc{
+     		font-size: 120%;
+     	}
+
+     	.greybg{
+     		background-color: #e7e7e7;
+     		text-align: center;
+     	}
+
+     	.glyph{
+     		font-size: 250%;
+     		color: grey;
+     		margin-bottom: 0px
+     	}
+
+     </style>
+
+     <div class="container">
+     <div>
+       <div class="col-md-6">
+        <h1 class="big">Perform Systematic Literature Reviews</h1>
+    	<br><br>
+    	<p class="desc">Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher. <strong>Rexsoc</strong> will help you planning, conducting and reporting the review.</p> 
+       </div>
+
+       <div class="col-md-offset-2 col-md-4">
+       	<h1>Sign up for Rexsoc</h1>
+
+        <form action="{% url 'django.contrib.auth.views.login' %}" method="post">
+
+        {% csrf_token %}
+        
+       	{{form.username}}
+       	{{form.email}}
+       	{{form.password1}}
+        {{form.password2}}
+        
+        <br>
+        <input type="Submit" class="btn btn-success btn-block" value="Create New Account">
+        <br>
+        </form>
+       </div>
+       </div>
+      </div>
+        <br>
+       <br>
+      <div class="greybg">
+       <div class="container ">
+       <br>
+       	  <span class="glyphicon glyphicon-globe glyph"></span>
+       	  <h3>Support for geographically distributed researchers</h3>
+       	  <p class="desc">Rexsoc is a powerful platform that provides full support for researchers geographically distributed to work on the same <br>Systematic Literature Review. There is no limit of authors per review.</p>
+       	  <br>
+       	  <hr>
+
+       	  <span class="glyphicon glyphicon-book glyph"></span>
+       	  <h3>Publish extra information</h3>
+       	  <p class="desc">Normally you can't publish all relevant information about the research as frequently there is a limit amount of pages to <br>publish your article on a certain conference or journal. Rexsoc provides you a beautiful interface to publish any extra <br>information like the whole result from the search string, all modifications of the search string, more details about the<br> protocol, etc.</p>
+       	  <br>
+       	  <hr>
+
+       	  <span class="glyphicon glyphicon-duplicate glyph"></span>
+       	  <h3>Support for tertiary studies</h3>
+       	  <p class="desc">Having a huge amount of Systematic Literature Reviews in the platform, it will provide a powerful support for tertiary <br> studies, that is, systematic literature review of secondary studies.</p>
+       	  <br>
+
+       </div>
+       </div>
+
+{% endblock %}
+
+    
+
+
+

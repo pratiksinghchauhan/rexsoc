@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block style %} 
+      position:absolute;
+{% endblock %}
+
+{% block nav %}
+   <li><a href="/signup/">Sign Up</a></li>
+   <li><a href="/login/">Login <span class="glyphicon glyphicon-log-in"></span></a></li> 
+{% endblock %}
+
+{% block content %}
+         <br><br><br>
+         <div class="col-md-offset-4 col-md-4">
+         	  <div id="form-header">Sign up for ReXsoc</div><br>
+         	    <form action="" method="post">
+         	    	<div class="form-group">
+
+         	    		 {{ form.username.label_tag }}  
+         	    		 {{ form.username }}
+
+         	    		 {{ form.email.label_tag }}  
+         	          {{ form.email }}
+
+         	          {{ form.password1.label_tag }}  
+         	    		 {{ form.password1 }}
+
+         	    		 {{ form.password2.label_tag }}  
+         	    		 {{ form.password2}}
+         	    		 <br>        	    		
+
+         	    		<input type="Submit" class="btn btn-info" value="Sign Up" style="float: left">
+         	    		{% csrf_token %}
+
+         	    	</div>
+         	    </form>
+         	    <br><br>
+
+         </div>
+
+{%endblock%}

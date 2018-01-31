@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+
+{% block style %} 
+      position:absolute;
+{% endblock %}
+
+
+{% block nav %}
+
+              <li><a href="/profile/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+	
+	.settinglist{
+		margin-top: 0px;
+	}
+	li:hover{
+		background-color: grey;
+	}
+</style>
+<br><br>
+    <div class="container">
+    	<div class="col-md-3">
+    		
+    		<div class="panel panel-default">
+              	  	<div class="panel-heading">Account Settings</div>
+              	  	   <div class="list-group settinglist">
+                           <a href="/accountsettings/" class="list-group-item">Profile</a>
+                           <a href="/emailsettings/" class="list-group-item">Emails</a>
+                           <a href="/upload/" class="list-group-item">Picture </a>
+                           <a href="/passwordsettings/" class="list-group-item">Password</a>
+                       </div>
+    	    </div>
+          </div>
+
+         <div class="col-md-9">
+            {% block form %}
+
+            {% endblock %}
+
+         </div>     
+         </div>
+        
+
+
+{% endblock %}

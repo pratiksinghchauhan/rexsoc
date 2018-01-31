@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block style %} 
+      position:absolute;
+{% endblock %}
+
+
+{% block nav %}
+
+              <li><a href="/userhome/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+{% endblock %}
+
+<style type="text/css">
+	.su{
+		text-align: center;
+	}
+</style>
+{% block content %}
+
+    <div class="container su">
+    	<h2>Your review is sucessfully submitted<br><a href="/userhome/">Click Here</a> to go back</h2>
+    </div>
+{% endblock %}

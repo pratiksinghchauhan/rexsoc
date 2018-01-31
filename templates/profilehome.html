@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+
+{% block style %}
+    position:relative;
+{% endblock %}
+
+
+{% block nav %}
+
+              <li><a href="/profile/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+{% endblock %}
+
+{% block content %}
+<style type="text/css">
+	.udet{
+		color: grey;
+	}
+	.picd{
+		text-align: center;
+	}
+	.profileshaan{
+		text-align: center;
+		color: grey;
+
+	}
+
+	.kitab{
+		font-size: 400%;
+	}
+</style>
+           <br>
+           <div class="container">
+           	  <div class="col-md-2 picd">
+              {% if query.profilepic %}
+                 <a href="/upload/"><img src="{{ query.profilepic.url }}" alt="profile pic" class="img-thumbnail img-circle"></a>
+
+              {% else %}
+           	     <img src="http://www.sbesports.com/uploads/7/8/6/7/7867102/no-image_5_orig.png" alt="profile pic" class="img-circle img-responsive img-thumbnail">
+              {% endif %}
+
+           	     <br><br>
+                 {% block rev %} {% endblock %}
+           	  </div>
+
+           	  <div class="col-md-10" style="font-size: 120%; line-height: 1.8">
+           	     <h1>{{query.firstname}} {{query.lastname}}</h1>{% block followedit %} {% endblock %}<br>
+           	     <a href="#">Followers {{followcount}}</a>|<a href="#">Following {{followingcount}}</a><br>   
+                 <div class="udet">
+           	     	<p style="float: left;"><span class="glyphicon glyphicon-user"></span>{{query.username}} &nbsp&nbsp <span class="glyphicon glyphicon-envelope"></span> {{query.public_email}} &nbsp&nbsp<span class="glyphicon glyphicon-globe"></span><a href='{{item.url}}'> {{query.url}}</a> </p>
+
+           	     	<p style="text-align: right;"><span class="glyphicon glyphicon-education"></span>{{query.institution}} &nbsp&nbsp  <span class="glyphicon glyphicon-map-marker"></span>{{query.location}}</p>
+           	     </div>
+                 </div>
+                 </div>
+
+
+
+               {% if reviewfound %}
+                   <br>
+                  {% for items in reviewfound %}
+                     <div class="container">
+                     <h2>{{items.title}}</h2>
+                     <p>Posted on: {{items.date}}</p>
+                     <p>{{items.description}}</p>
+                     </div>
+                  {% endfor %}
+
+               {% else %}
+                    <br><br><br><br>
+                    <div class="container">
+                    <div class="jumbotron profileshaan">
+                       <br><br>
+                       <span class="glyphicon glyphicon-book kitab"></span><br>
+                       <h2>No reviews posted yet</h2>
+                       {% if query.username == request.user.username %}
+                       <a href="/review/"><button type="button" class="btn btn-primary">New review</button></a>
+                       {% endif %}
+                    </div>
+                    </div>
+                {% endif %}
+{% endblock %}

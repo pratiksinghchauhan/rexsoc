@@ -1,0 +1,15 @@
+ 
+{% extends "profilesettings.html" %}
+{% block form %}
+
+ <div id="pics">
+               <form action="" enctype="multipart/form-data" method="post">
+                  <label for="#profilepic">Profile Photo:</label>
+               	     {{form.as_p}}
+               	  <br>
+               	  <button type="submit" class="btn btn-primary">Submit</button>
+               	  {% csrf_token %}
+
+               </form>
+</div>
+{% endblock %} 

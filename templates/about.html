@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block style %} 
+      position:;
+{% endblock %}
+
+{% block nav %}
+          {% if user.is_authenticated %}
+              <li><a href="/userhome/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+             {% else %}
+              <li><a href="/signup/">Sign Up</a></li>
+              <li><a href="/login/">Login <span class="glyphicon glyphicon-log-in"></span></a></li> 
+             {% endif %} 
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+	.mainheading{
+		color: grey;
+		font-size: 350%;
+		font-family: "Times New Roman";
+	}
+	.jumbotron{
+		text-align: center;
+
+	}
+	.jp{
+		color: grey;
+	}
+
+	.paras{
+		font-size: 120%;
+		font-weight: lighter;
+		font-color:grey;
+	}
+
+	
+
+</style>
+
+      <div class="jumbotron">
+         <h2 class="mainheading">About Rexsoc</h2>
+         <p class="jp">Learn more about the project and our goals</p>
+       </div>
+
+       <br><br>
+
+       <div class="container">
+       	  <h2>What's Rexsoc?</h2>
+       	  <p class="paras"><strong>Rexsoc</strong> is an online tool designed to support researchers to perform systematic literature reviews within the context of <strong>Software Engineering</strong>. Geographically distributed researchers can work together within a shared workspace, designing the protocol and conducting the research.<br><br>As well as providing a way to document the whole process, the tool will help you remind what is important during a systematic literature review. During the planning phase, <strong>Rexsoc</strong> will help you with the objectives, PICOC, research questions, search string, keywords and synonyms, selecting the sources, the inclusion and exclusion criterias. Will also provide mechanisms to build a quality assessment checklist and data extraction forms.<br><br>During the conducting phase, you will be able to import bibtex files and select the studies, find duplicates among all the different sources, execute the quality assessment and extract data from the papers.<br></p>
+
+       	  <h2>What's a Systematic Literature Review?</h2>
+       	  <p class="paras">A systematic literature review is a secondary study with the objective to identify, analyze and interpret all available evidences from primary studies related to a specific research question. As suggested by Kitchenham and Charters, the activity to perform a systematic literature review involves planning, conducting and reporting the review<br><br>Performing a systematic literature review is a labor-intensive task that requires a huge amount of work from the researcher, designing the protocol, adjusting the search string, filtering the results, sometimes more than a thousand of articles, selecting those articles that attends the include criteria and removing those articles that attends the exclude criteria. After that, the researcher might start to analyze the relevant result one by one.<br><br><strong>Rexsoc</strong> was designed to help you through all those steps.</p>
+
+       	  <h2>References</h2>
+       	  <p class="paras">Kitchenham B (2007) Guidelines for performing Systematic Literature Reviews in Software Engineering, Version 2.3, EBSE Technical Report EBSE-2007-01, Keele University and University of Durham</p>     	  
+       </div>
+       
+
+
+
+{% endblock %}

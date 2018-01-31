@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block style %}
+    position:absolute;
+{% endblock %}
+
+
+{% block nav %}
+
+              <li><a href="/profile/">{{request.user.username}}</a></li>
+              <li><a href="/accountsettings/"> <span class="glyphicon glyphicon-cog"></span></a></li>
+              <li><a href="/logout/">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+{% endblock %}
+
+{% block content %}
+  <br>
+    <div style="text-align: center;">
+          {% for items in query %}
+             <a href='/profile/{{items.username}}'><h2>{{items.username}}</h2><br></a>
+          {% endfor %}
+
+          {% if not query %}
+              <h2>No items match your query <br> Please try again</h2>
+          {% endif %}
+    	
+    </div>
+{% endblock %}

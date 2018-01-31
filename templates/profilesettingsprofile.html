@@ -1,0 +1,29 @@
+{% extends "profilesettings.html" %}
+{% block form %}
+<div id="profile">
+               <form action="" method="post">
+   	                {{ form.firstname.label_tag }}
+   	                {{ form.firstname }}
+
+   	                {{ form.lastname.label_tag }}
+   	                {{ form.lastname }}
+
+   	                {{ form.public_email.label_tag }}
+   	                {{ form.public_email }}
+
+   	                {{ form.url.label_tag }}
+   	                {{ form.url }}
+
+   	                {{ form.institution.label_tag }}
+   	                {{ form.institution }}
+
+   	                {{ form.location.label_tag }}
+   	                {{ form.location }}
+
+   	                <br>
+
+   	                <button type="submit" class="btn btn-success btn-lg">Submit</button>
+   	                {% csrf_token %}
+   	            </form>          	
+            </div> 
+{% endblock %} 

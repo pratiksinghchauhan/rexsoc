@@ -1,0 +1,21 @@
+{% extends 'profilehome.html'%}
+{% block followedit %}
+
+          <form method="post" action="">
+            <a href="#"><button type="submit" class="btn btn-success btn-sm"> <span class="glyphicon glyphicon-ok"></span>&nbsp
+
+               {% if wing  %}
+               
+                Following
+                </button></a>
+                <input type="hidden" name="follow" value="unfollow">
+               
+               {% else %}
+                Follow
+                </button></a>
+                <input type="hidden" name="follow" value="follow">
+               {% endif %}
+            
+            {% csrf_token %}
+          </form>
+{% endblock %}
